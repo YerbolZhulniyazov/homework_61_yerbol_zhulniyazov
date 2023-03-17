@@ -1,0 +1,122 @@
+body {
+    font-family: Arial, sans-serif;
+    color: black;
+    background-size: cover !important;
+    background: url("/static/img/issuetracker.png") no-repeat;
+}
+
+.container {
+    max-width: 1320px;
+}
+
+.card {
+    background-color: #9a8aea !important;
+}
+
+.card-margin {
+    margin-top: 60px;
+    margin-left: 60px;
+}
+
+.img-fluid {
+    height: 100%;
+    width: 100%;
+}
+
+.small-text {
+    font-size: 13px;
+}
+
+.edit-button{
+    width: 70px;
+}
+
+.textarea {
+    resize: both;
+    height: 100%;
+    width: 100%;
+}
+
+.margin-buttons {
+    margin-bottom: 15px;
+}
+
+.buttons {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: row;
+}
+
+.btn-primary {
+    margin-left: 10px;
+}
+
+h1 {
+    margin-top: 50px;
+    margin-left: 40px;
+}
+
+.title {
+    background-color: #9a8aea;
+    margin-left: 50px;
+    padding-bottom: 20px;
+    padding-left: 20px;
+}
+
+.log {
+    background: none;
+    color: black;
+    border-color: transparent;
+}
+
+.user {
+    color: black;
+}
+
+.title_1 {
+    background-color: #9a8aea;
+    margin-left: 50px;
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    margin-top: 10px;
+}
+
+.pagination a, .pagination .page-disabled {
+    display: inline-block;
+    border-radius: 3px;
+    padding: 5px;
+    margin: 3px;
+}
+
+.pagination a {
+    background: #6c757d;
+    color: white;
+    text-decoration: none;
+}
+
+.pagination a:hover {
+    background: #565e64;
+    text-decoration: none;
+}
+
+.pagination .page-disabled {
+    background: white;
+    color: #dddddd
+}
+
+.pagination .current-page {
+    display: inline-block;
+}
+
+.pagination .current-page input {
+    width: 50px;
+    padding: 5px 7px;
+    font-size: inherit;
+    border-radius: 5px;
+    text-align: center;
+    border: solid 1px gray;
+}
