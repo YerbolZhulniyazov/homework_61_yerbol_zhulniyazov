@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% load django_bootstrap5 %}
+{% block content %}
+    <form method="post">
+        <div class="container" style="margin-top: 30px">
+            <div class="row d-flex justify-content-center">
+                <div class="col-6 card text-bg-light form-margins">
+                    <div class="form_row">
+                        {% csrf_token %}
+                        {% include 'partial/issue_form.html' with button_text='Войти' %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+{% endblock %}
