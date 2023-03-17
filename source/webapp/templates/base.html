@@ -1,0 +1,45 @@
+{% load static %}
+{% load django_bootstrap5 %}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+{% bootstrap_messages %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Base{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #9a8aea;">
+    <div class="container">
+        <a class="navbar-brand" href="{% url 'index' %}">Issue Tracker</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+                aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+                <a class="nav-item nav-link" href="{% url 'issues' %}">Задачи</a>
+                {% if user.is_authenticated %}
+                    <a class="nav-item nav-link" href="{% url 'project_add' %}">Добавить проект</a>
+                    {% block menu %}{% endblock %}
+                    <form action="{% url 'logout' %}" method="post">
+                        {% csrf_token %}
+                        <input type="submit" class="btn btn-primary log" value="Выйти">
+                    </form>
+                    <p class="nav-item nav-link user">Привет, {{ user.username }}</p>
+                {% else %}
+                    <li><a href="{% url 'login' %}" class="btn btn-primary log">Войти</a></li>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</nav>
+{% block content %}
+{% endblock %}
+
+</body>
+</html>

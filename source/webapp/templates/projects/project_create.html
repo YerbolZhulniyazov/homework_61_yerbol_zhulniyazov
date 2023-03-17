@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block title %}Project Add{% endblock %}
+{% block content %}
+
+    <div class="container" style="margin-top: 30px">
+        <div class="row d-flex justify-content-center">
+            <div class="col-6 card text-bg-light form-margins">
+                <h3>Добавление Проекта</h3>
+                <form action="{% url 'project_add' %}" method="post">
+                    {% include 'partial/issue_form.html' with button_text='Создать' %}
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}

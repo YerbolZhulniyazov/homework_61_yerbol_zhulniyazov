@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block title %}Issue confirm delete{% endblock %}
+{% block content %}
+    <div class="container">
+    <div class="title col-6" style="margin-bottom:30px;">
+        <h1>Вы действительно хотите удалить данную задачу?:</h1>
+    </div>
+        <div class="card" style="width: 50rem;">
+            <div class="card-body">
+                <h5 class="card-title">{{ issue.summary }}</h5>
+                <p><b>Описание:</b> {{ issue.description }}</p>
+                {% if types %}
+                    <div class="row">
+                        {% for type in types %}
+                            <div class="col-3">
+                                <p><b>Тип: </b>{{ type }}</p>
+                            </div>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+                <p><b>Статус: </b> {{ issue.status }} </p>
+
+            </div>
+        </div>
+         <form action="{% url 'issue_confirm_delete' issue.pk %}" method="post">
+                {% csrf_token %}
+                <div class="buttons">
+                    <p><input type="submit" button type="button" class="btn btn-danger" value="Удалить"></p>
+                    <p><a href="{% url 'index' %}" button type="button" class="btn btn-primary delete">Отмена</a></p>
+                </div>
+            </form>
+    </div>
+{% endblock %}

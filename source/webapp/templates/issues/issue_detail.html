@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% block title %}Issue Info{% endblock %}
+{% block content %}
+    <div class="container">
+        <div class="row d-flex justify-content-center card-margin">
+            <div class="card col-6">
+                <h2>Краткое описание: {{ issue.summary }}</h2>
+                <p>
+                    <b>Полное описание: </b>{{ issue.description }}
+                </p>
+
+                {% if types %}
+                    <div class="row">
+                        {% for type in types %}
+                            <div class="col-3">
+                                <p><b>Тип: </b>{{ type }}</p>
+                            </div>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+                <p><b>Статус: </b> {{ issue.status }} </p>
+                <p><b>Дата создания: </b> {{ issue.created_at }} </p>
+                <p><b>Дата обноовления: </b> {{ issue.updated_at }} </p>
+                <div class="row margin-buttons">
+                    <div class="col-3">
+                        <a class="btn btn-primary edit-button" href="{% url 'issue_update' issue.pk %}"
+                           role="button">Edit</a>
+                    </div>
+                    <div class="col-3">
+                        <a class="btn btn-danger" href="{% url 'issue_delete' issue.pk %}"
+                           role="button">Delete</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

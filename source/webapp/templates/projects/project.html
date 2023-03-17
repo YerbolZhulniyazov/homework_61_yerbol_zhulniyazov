@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% block title %}Project Info{% endblock %}
+{% block menu %}
+    <a class="nav-item nav-link" href="{% url 'project_update' project.pk %}">Редактировать проект</a>
+    <a class="nav-item nav-link" href="{% url 'project_delete' project.pk %}">Удалить проект</a>
+    <a class="nav-item nav-link" href="{% url 'add_issue' project.pk %}">Добавить задачу</a>
+{% endblock %}
+{% block content %}
+    <div class="container">
+        <div class="title col-6">
+            <h1>
+                Название проекта: {{ project.name }}</h1>
+            <p><b>Описание:</b> {{ project.description }}</p>
+            <p><b>Начало проекта:</b> {{ project.started_at }}</p>
+            {% if project.finished_at %}
+                <p><b>Окончание проекта:</b> {{ project.finished_at }}</p>
+            {% else %}
+                <p><b>Окончание проекта:</b> Неизвестно</p>
+            {% endif %}
+        </div>
+        <div class="row">
+            {% for issue in issues %}
+                <div class="card card-margin col-5">
+                    <h2>{{ issue.summary }}</h2>
+                    <p>Описание задачи: {{ issue.description }}</p>
+                    <p>
+                        <a href="{% url 'issue_detail' issue.pk %}" class="btn btn-primary read_more">Подробнее</a>
+                    </p>
+                </div>
+                {% empty %}
+                <h1>Issues not found</h1>
+            {% endfor %}
+
+        </div>
+    </div>
+{% endblock %}

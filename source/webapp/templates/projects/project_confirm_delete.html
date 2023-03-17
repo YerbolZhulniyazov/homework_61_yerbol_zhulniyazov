@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block title %}Project confirm delete{% endblock %}
+{% block menu %}
+{% endblock %}
+{% block content %}
+    <div class="container">
+        <div class="title col-6" style="margin-bottom:30px;">
+            <h1>Вы действительно хотите удалить данный проект?:</h1>
+        </div>
+        <div class="card" style="width: 50rem;">
+            <div class="card-body">
+                <h5 class="card-title">{{ project.name }}</h5>
+                <p><b>Описание:</b> {{ project.description }}</p>
+
+            </div>
+        </div>
+        <form action="{% url 'project_confirm_delete' project.pk %}" method="post">
+            {% csrf_token %}
+            <div class="buttons">
+                <p><input type="submit" button class="btn btn-danger" value="Удалить"></p>
+                <p><a href="{% url 'index' %}" button type="button" class="btn btn-primary">Отмена</a></p>
+            </div>
+        </form>
+    </div>
+{% endblock %}
